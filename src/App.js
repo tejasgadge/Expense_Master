@@ -1,4 +1,3 @@
-import './App.css';
 import React from 'react';
 import { Header } from './component/header';
 import { Balance } from './component/balance';

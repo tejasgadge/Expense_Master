@@ -1,30 +1,33 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addtransaction } from "../redux/slices";
+import { updatepocket } from "../redux/slices";
 import {nanoid} from "@reduxjs/toolkit"
 
 export const AddTransaction = () => {
   const [text, setText] = useState("");
   const [amount, setAmount] = useState(0);
   const dispatch=useDispatch();
-
-  const onSubmit = (e) => {
+ 
+  const onsubmit = (e) => {
     e.preventDefault();
 
     const newTransaction = {
       id: nanoid(),
-      text,
-      amount: amount,
+      text:text,
+      amount:amount
     };
 
     dispatch(addtransaction(newTransaction));
+    dispatch(updatepocket(newTransaction.amount));
+
   };
 
   return (
     <>
       <div className="addtransaction">
         <h3>Add new transaction</h3>
-        <form onSubmit={onSubmit}>
+        <form onSubmit={onsubmit}>
           <div className="form-control">
             <input
               type="text"

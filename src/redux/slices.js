@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 const pocket=createSlice({
-    name:'pocket',
+    name:"pocket",
     initialState : {
         income : 0,
         expense : 0,
@@ -8,19 +8,27 @@ const pocket=createSlice({
     },
     reducers :{
         updatepocket  : (state,action)=>{
-            if(action.payload>0)
+            const money=parseInt(action.payload)
+            if(money>0)
             {
-                state.income+=action.payload
+                state.income+=money;
             }
             else 
             {
-                state.expense+=action.payload
+                state.expense+=money
             }
         },
         addtransaction : (state,action)=>{
             state.transaction.push(action.payload)
-        }
+        },
+        // deletetransaction : (state,action)=>{
+        //     state.transaction.pop(action.payload)
+        // }
+
     }
-})
-export default pocket.reducers;
-export const  {addtransaction} = pocket.action;
+});
+export const  { updatepocket, addtransaction} = pocket.actions;
+export default pocket.reducer;
+
+// export const { increment, decrement } = counter.actions;
+// export default counter.reducer;

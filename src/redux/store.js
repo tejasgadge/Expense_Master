@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import pocket from "./slices"
 const mystore=configureStore({
-    reducers : { 
+    reducer : { 
         expensereducer:pocket
     }
 }
