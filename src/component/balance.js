@@ -20,7 +20,6 @@ function moneyFormatter(num) {
 export const Balance = () => {
 
   const pocket=useSelector((state)=> state.expensereducer)
-  console.log(pocket)
 
   return (
     <>

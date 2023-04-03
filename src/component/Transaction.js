@@ -1,12 +1,16 @@
-import React, {useContext} from 'react';
-import { GlobalContext } from '../context/GlobalState';
+import React from 'react';
+import { useDispatch } from "react-redux";
+import { deletetransaction,updatepocket } from "../redux/slices";
 
+// import handledelete from './handledelete';
 //Money formatter function
 function moneyFormatter(num) {
+
   console.log(num)
   // let p = num.toFixed(2).split(".");
-  // return (
-  //   "₹ " +
+  return (
+    "₹" + Math.abs(num)
+    );
   //   p[0]
   //     .split("")
   //     .reverse()
@@ -14,18 +18,25 @@ function moneyFormatter(num) {
   //       return num === "-" ? acc : num + (i && !(i % 3) ? "," : "") + acc;
   //     }, "") +
   //   "." +
-  //   p[1]
-  // );
+  //   p[1] 
 }
 
-export const Transaction = ( trans ) => {
-  const { deleteTransaction } = useContext(GlobalContext);
+export const Transaction = ( {id,text,amount} ) => {
 
-  const sign = trans.amount < 0 ? '-' : '+';
+  const dispatch=useDispatch()
+  const handledelete=()=>{
+
+    dispatch(deletetransaction(id))
+    dispatch(updatepocket(amount*-1))
+
+}
+
+
+  const sign = amount < 0 ? '-' : '+';
 
   return (
-    <li className={trans.amount < 0 ? 'minus' : 'plus'}>
-      {trans.text} <span>{sign}{moneyFormatter(trans.amount)}</span><button onClick={() => deleteTransaction(trans.id)} className="delete-btn">x</button>
+    <li className={amount < 0 ? 'minus' : 'plus'}>
+      {text} <span>{sign}{moneyFormatter(amount)}</span><button onClick={()=>{handledelete()}} className="delete-btn">x</button>
     </li>
   )
 }

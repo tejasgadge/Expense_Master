@@ -2,25 +2,24 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addtransaction } from "../redux/slices";
 import { updatepocket } from "../redux/slices";
-import {nanoid} from "@reduxjs/toolkit"
+import { nanoid } from "@reduxjs/toolkit";
 
 export const AddTransaction = () => {
   const [text, setText] = useState("");
   const [amount, setAmount] = useState(0);
-  const dispatch=useDispatch();
- 
+  const dispatch = useDispatch();
+
   const onsubmit = (e) => {
     e.preventDefault();
 
     const newTransaction = {
       id: nanoid(),
-      text:text,
-      amount:amount
+      text: text,
+      amount: amount,
     };
 
     dispatch(addtransaction(newTransaction));
     dispatch(updatepocket(newTransaction.amount));
-
   };
 
   return (
