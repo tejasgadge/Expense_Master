@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch } from "react-redux";
-import { deletetransaction,updatepocket } from "../redux/slices";
+import { deletetransaction} from "../redux/slices";
+
 
 // import handledelete from './handledelete';
 //Money formatter function
@@ -24,10 +25,11 @@ function moneyFormatter(num) {
 export const Transaction = ( {id,text,amount} ) => {
 
   const dispatch=useDispatch()
+
   const handledelete=()=>{
 
-    dispatch(deletetransaction(id))
-    dispatch(updatepocket(amount*-1))
+    dispatch(deletetransaction({id,amount}))
+    // dispatch(updatepocket(amount*-1))
 
 }
 

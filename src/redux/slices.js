@@ -21,8 +21,9 @@ const pocket = createSlice({
     },
 
     deletetransaction: (state, action) => {
+      action.payload.amount<0?state.expense-=action.payload.amount:state.income-=action.payload.amount;
       state.transaction = state.transaction.filter((transaction) => {
-        return transaction.id != action.payload;
+        return transaction.id !== action.payload.id;
       });
     },
   },
