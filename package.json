@@ -1,5 +1,5 @@
 {
-  "homepage":"http://tejasgadge.github.io/Expense_Master",
+  "homepage":".",
   "name": "expensemaster",
   "version": "0.1.0",
   "private": true,
@@ -29,6 +29,7 @@
       "react-app/jest"
     ]
   },
+
   "browserslist": {
     "production": [
       ">0.2%",
